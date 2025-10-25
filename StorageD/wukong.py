@@ -7,6 +7,15 @@ from StorageD.tools import BaseTools as bt
 from StorageD.tools import CodecException
 from StorageD.rules import RULES_COUNT,ALL_RULES
 
+
+
+from nullomer_brute_force.brute_null import read_genome_file
+organism_genome_path ="genome_input/GCF_bacillus_subtilis.fna"
+organism_genome = read_genome_file(organism_genome_path)
+
+GENOME= organism_genome
+
+
 import logging
 log = logging.getLogger('mylog')
 
@@ -168,6 +177,9 @@ class Wukong():
             gc_content = bt.get_gc(check_str)
             if gc_content < self.min_content or gc_content > self.max_content:
                 # log.debug("gc false: {} - {}:{}".format(index,last,check_str))
+                return False
+            if check_str in GENOME:
+                print("found nullomer", check_str)
                 return False
         return True
 
