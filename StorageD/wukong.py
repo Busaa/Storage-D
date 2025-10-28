@@ -178,10 +178,16 @@ class Wukong():
             if gc_content < self.min_content or gc_content > self.max_content:
                 # log.debug("gc false: {} - {}:{}".format(index,last,check_str))
                 return False
-            if check_str in GENOME:
+            if check_str == check_str[::-1]: #palindrome check
+                print("found palindrome", check_str, check_str[::-1])
+                return False 
+            
+            if check_str in GENOME: #nullomer check
                 
+                nullomer_count +=1
                 return False
-        print("found nullomer", len(dnastr), len(check_str), check_str)
+        #print("found nullomer", len(dnastr), len(check_str), check_str)
+        
         return True
 
     def _get_virtual_segment(self, bit_segment):
