@@ -179,8 +179,9 @@ class Wukong():
                 # log.debug("gc false: {} - {}:{}".format(index,last,check_str))
                 return False
             if check_str in GENOME:
-                print("found nullomer", check_str)
+                
                 return False
+        print("found nullomer", len(dnastr), len(check_str), check_str)
         return True
 
     def _get_virtual_segment(self, bit_segment):
